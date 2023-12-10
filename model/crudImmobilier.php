@@ -1,6 +1,6 @@
 <?php
-require_once "config/connection.php";
-require_once "model/immobilier.php";
+require_once "../config/connection.php";
+require_once "immobilier.php";
 class CrudImmobilier
 {
     public $pdo;
@@ -12,12 +12,12 @@ class CrudImmobilier
     }
     public function addImmobilier($immobilier)
     {
-        $req = "INSERT INTO immobilier(reference,proprietaire,localite,nbpiece,domaineUsage,nature,nbEtage,surface) VALUES({$immobilier->getReference()},
-        {$immobilier->getProprietaire()},
-        {$immobilier->getLocalite()},
+        $req = "INSERT INTO immobilier(referance,proprietaire,localite,nbpieces,domaineUsage,nature,nbEtage,surface) VALUES({$immobilier->getReference()},
+        '{$immobilier->getProprietaire()}',
+        '{$immobilier->getLocalite()}',
         {$immobilier->getNbpiece()},
-        {$immobilier->getDomaineUsage()},
-        {$immobilier->getNature()},
+        '{$immobilier->getDomaineUsage()}',
+        '{$immobilier->getNature()}',
         {$immobilier->getNbEtage()},
         {$immobilier->getSurface()})";
         $stmt = $this->pdo->exec($req);
@@ -38,11 +38,11 @@ class CrudImmobilier
     }
     public function updateImmobilier($immobilier)
     {
-        $req = "UPDATE immobilier SET proprietaire={$immobilier->getProprietaire()},
-        localite={$immobilier->getLocalite()},
+        $req = "UPDATE immobilier SET proprietaire='{$immobilier->getProprietaire()}',
+        localite='{$immobilier->getLocalite()}',
         nbpiece={$immobilier->getNbpiece()},
-        domaineUsage={$immobilier->getDomaineUsage()},
-        nature={$immobilier->getNature()},
+        domaineUsage='{$immobilier->getDomaineUsage()}',
+        Nature='{$immobilier->getNature()}',
         nbEtage={$immobilier->getNbEtage()},
         surface={$immobilier->getSurface()} WHERE reference={$immobilier->getReference()}";
         $stmt = $this->pdo->exec($req);
