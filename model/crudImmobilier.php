@@ -12,7 +12,7 @@ class CrudImmobilier
     }
     public function addImmobilier($immobilier)
     {
-        $req = "INSERT INTO immobilier(referance,proprietaire,localite,nbpieces,domaineUsage,nature,nbEtage,surface) VALUES({$immobilier->getReference()},
+        $req = "INSERT INTO immobilier(reference,proprietaire,localite,nbpieces,domaineUsage,nature,nbEtage,surface) VALUES({$immobilier->getReference()},
         '{$immobilier->getProprietaire()}',
         '{$immobilier->getLocalite()}',
         {$immobilier->getNbpiece()},
@@ -33,8 +33,8 @@ class CrudImmobilier
     public function getImmobilier($reference)
     {
         $req = "SELECT * FROM immobilier WHERE reference={$reference}";
-        $stmt = $this->pdo->exec($req);
-        return $stmt;
+        $stmt = $this->pdo->query($req);
+        return $stmt->fetch();
     }
     public function updateImmobilier($immobilier)
     {

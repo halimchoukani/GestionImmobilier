@@ -13,6 +13,6 @@ if (isset($_POST['reference']) && isset($_POST['proprietaire']) && isset($_POST[
     $surface = $_POST['surface'];
     $immobilier = new immobilier($reference, $proprietaire, $localite, $nbpiece, $domaineUsage, $nature, $nbEtage, $surface);
     $crudImmobilier->addImmobilier($immobilier);
-    header("location:../view/allimmobilier.php");
+    header("location:../controller/allimmobilier.php");
 }
 include_once '../view/addImmobilier.php';
